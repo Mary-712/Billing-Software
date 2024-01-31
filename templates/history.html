@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load static %}
+
+
+<div class="row">
+    <div class="col-xl-8 col-lg-8 col-md-8">
+        <div class="card">
+            <div class="card-header">
+                <div class="container col-md-10 mr-1" style="background-color: rgb(130, 144, 199);min-height: 100vh;"> 
+    
+                    <div class="container col-md-10" style="box-shadow: 3px 3px 3px gray;border-radius: 15px;padding: 20px;background-color: white;">
+                        <h4 style="color:rgb(61, 68, 101); ; font-weight:bold;">PURCHASE BILL NO : {{pbill.billno}}</h4>
+                        <table class="table" >
+                         <thead>
+                             <tr>
+                                 <th style="font-size: larger;">ACTION</th>
+                                 <th style="font-size: larger;">DATE</th>
+                                 <th style="font-size: larger;">STAFF</th>
+                             </tr>
+                         </thead>
+                         <tbody>
+                            {% for h in hst %}                            
+                             <tr>
+                                <td>{{forloop.counter}}</td>
+                                {% if h.action == 'Created' %}
+                                <td style="color: red;" >{{h.action}}</td>
+                            {% else %}
+                                <td style="color: #154c79;" >{{h.action}}</td>
+                            {% endif %}
+                            <td style="color: black;" >{{h.transactiondate | date:'d-m-Y'}}</td>
+                            <td style="color: black;" >{{staff.first_name}} {{staff.last_name}}</td>
+                             </tr>
+                             {% endfor %}
+                         </tbody>
+                     </table>
+                    </div>
+                 
+                 </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}

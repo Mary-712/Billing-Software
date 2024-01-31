@@ -1,0 +1,84 @@
+{% comment %} Name: Mary C Wilson {% endcomment %}
+
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Billing Software </title>
+        <link rel="shortcut icon" type="image/png" href="{% static 'img/logo/logo3.png' %}" />
+        <link rel="stylesheet" href="static/assets/vendor/owl-carousel/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="static/assets/vendor/owl-carousel/css/owl.theme.default.min.css">
+        <link href="static/assets/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+        <link href="static/css/style.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/fbe819dd43.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+
+    </head>
+<body>
+    <div class="modal fade bd-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="col-md-4">
+                    <label class="d-block text-left" for="iname">Item</label>
+                    <input type="text" name="iname" class="form-control" id="iname" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="d-block text-left" for="cno">HSN</label>
+                    <input type="number" name="ino" class="form-control" id="cno" required>
+                </div>
+                <div class="col-md-4">
+                    <label class="d-block text-left" for="unit">Item Unit</label>
+                    <input type="text" name="iunit" class="form-control" id="unit" required>
+                </div>
+                <!-- Add the sale price input field -->
+                <div class="col-md-4">
+                    <label class="d-block text-left" for="spurchase">Sale Price</label>
+                    <input type="number" name="spurchase" class="form-control" id="spurchase" required>
+                </div>
+            </div><br>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="saveItem()">Save changes</button>
+            </div>
+            
+            <script>
+                function openModal() {
+                    $('#myModal').modal('show');
+                }
+            
+                function saveItem() {
+                    var itemName = $('#iname').val();
+                    var itemHsn = $('#cno').val();
+                    var itemUnit = $('#unit').val();
+                    var itemSalePrice = $('#spurchase').val();
+            
+                    $.ajax({
+                        type: 'POST',
+                        url: '{% url "add_item" %}',
+                        data: {
+                            'iname': itemName,
+                            'ino': itemHsn,
+                            'iunit': itemUnit,
+                            'spurchase': itemSalePrice,
+                            csrfmiddlewaretoken: '{{ csrf_token }}'
+                        },
+                        success: function (data) {
+                            // Handle success, e.g., close the modal
+                            $('#myModal').modal('hide');
+                        },
+                        error: function (error) {
+                            // Handle error
+                            console.log(error);
+                        }
+                    });
+                }
+            </script>
+</body>
+</html>

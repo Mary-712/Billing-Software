@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-%!6h#b+(3lofkwd0gk7sr9$t*&)&(htx5i#a%opz(a5u!5$b8_
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'BillSoftware.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'bill',
+        'NAME': 'billsoftware',
         'USER':'root',
         'PASSWORD':'',
         'HOST':'localhost',
@@ -130,9 +130,3 @@ STATICFILES_DIRS=[os.path.join(BASE_DIR,'static')]
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-EMAIL_HOST='smtp.gmail.com'
-EMAIL_USE_TLS=True
-EMAIL_PORT=587
-EMAIL_HOST_USER='marywilsonc@gmail.com'
-EMAIL_HOST_PASSWORD='vqjs bisj mpqk zvvv'

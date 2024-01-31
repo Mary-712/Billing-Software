@@ -7,33 +7,33 @@
     Morris.Bar({
         element: 'morris-bar-chart',
         data: [{
-            y: '2018',
+            y: '2006',
             a: 100,
             b: 90
         }, {
-            y: '2019',
+            y: '2007',
             a: 75,
             b: 65
         }, {
-            y: '2020',
+            y: '2008',
             a: 50,
             b: 40
         }, {
-            y: '2021',
+            y: '2009',
             a: 75,
             b: 65
         }, {
-            y: '2022',
+            y: '2010',
             a: 50,
             b: 40
         }, {
-            y: '2023',
+            y: '2011',
             a: 75,
             b: 65
         }, {
-            y: '2024',
-            a: 10,
-            b: 14
+            y: '2012',
+            a: 100,
+            b: 90
         }],
         xkey: 'y',
         ykeys: ['a', 'b'],
@@ -43,7 +43,6 @@
         gridLineColor: '#eef0f2',
         resize: true
     });
-
 
     $('#info-circle-card').circleProgress({
         value: 0.70,

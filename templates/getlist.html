@@ -1,0 +1,595 @@
+{% comment %} Name: Mary C Wilson {% endcomment %}
+
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Billing Software </title>
+        <link rel="shortcut icon" type="image/png" href="{% static 'img/logo/logo3.png' %}" />
+        <link rel="stylesheet" href="static/assets/vendor/owl-carousel/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="static/assets/vendor/owl-carousel/css/owl.theme.default.min.css">
+        <link href="static/assets/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+        <link href="static/css/style.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/fbe819dd43.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+        <script src="path/to/jquery.min.js"></script>
+        <script src="path/to/bootstrap.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+        <script src="/static/path/to/jquery.min.js"></script>
+        <script src="/static/path/to/bootstrap.min.js"></script>
+        <script src="{% static 'path/to/jquery.min.js' %}"></script>
+        <script src="{% static 'path/to/bootstrap.min.js' %}"></script>
+
+    
+    </head>
+    <style>
+        #input,select,textarea{
+            box-shadow: 2px 2px 2px gray;
+        }
+        #input:hover{
+            box-shadow: none;
+        }
+        label{
+            color: black;
+        }
+        body{
+            background-color: rgb(130, 144, 199);
+            
+        }
+        
+       
+    </style>
+    <body>
+        <!--*******************
+           Preloader start
+       ********************-->
+       <div id="preloader">
+           <div class="sk-three-bounce">
+               <div class="sk-child sk-bounce1"></div>
+               <div class="sk-child sk-bounce2"></div>
+               <div class="sk-child sk-bounce3"></div>
+           </div>
+       </div>
+       <!--*******************
+           Preloader end
+       ********************-->
+   
+   
+       <!--**********************************
+           Main wrapper start
+       ***********************************-->
+       <div id="main-wrapper" >
+   
+           <!--**********************************
+               Nav header start
+           ***********************************-->
+           <div class="nav-header">
+               <a href="" class="brand-logo">
+                   <img class="logo-abbr" src="static/img/logo/logo3.png" alt="">
+                   <p style="margin-top: 10px;"> BILLING SOFTWARE</p>
+                   <img class="logo-compact" src="./images/logo-text.png" alt="">
+                   <img class="brand-title" src="./images/logo-text.png" alt="">
+               </a>
+   
+               <div class="nav-control">
+                   <div class="hamburger">
+                       <span class="line"></span><span class="line"></span><span class="line"></span>
+                   </div>
+               </div>
+           </div>
+           <!--**********************************
+               Nav header end
+           ***********************************-->
+   
+           <!--**********************************
+               Header start
+           ***********************************-->
+           <div class="header">
+               <div class="header-content">
+                   <nav class="navbar navbar-expand">
+                       <div class="collapse navbar-collapse justify-content-between">
+                           <div class="header-left">
+                               <div class="search_bar dropdown">
+                                   <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
+                                       <i class="mdi mdi-magnify"></i>
+                                   </span>
+                                   <div class="dropdown-menu p-0 m-0">
+                                       <form>
+                                           <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                       </form>
+                                   </div>
+                               </div>
+                           </div>
+   
+                           <ul class="navbar-nav header-right">
+           
+                               <li class="nav-item dropdown header-profile">
+                                   <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                       <i class="mdi mdi-account"></i>
+                                   </a>
+                                   <div class="dropdown-menu dropdown-menu-right">
+                                       <a href="{% url 'profile' %}" class="dropdown-item">
+                                           <i class="icon-user"></i>
+                                           <span class="ml-2">Profile </span>
+                                       </a>
+   
+                                       <a href="{% url 'logout' %}" class="dropdown-item">
+                                           <i class="icon-key"></i>
+                                           <span class="ml-2">Logout </span>
+                                       </a>
+                                   </div>
+                               </li>
+                           </ul>
+                       </div>
+                   </nav>
+               </div>
+           </div>
+       <div class="quixnav">
+           <div class="quixnav-scroll">
+               <ul class="metismenu" id="menu">
+                   <li><a href="{% url 'homepage' %}" aria-expanded="false"><i class="icon icon-world-2"></i><span class="nav-text">Dashboard</span></a></li>
+                   <li><a href="/" aria-expanded="false"><i class="icon icon-single-04"></i><span class="nav-text">Parties</span></a></li>
+                   <li><a href="/" aria-expanded="false"><i class="icon icon-globe-2"></i><span class="nav-text">Item</span></a></li>
+   
+                   <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                               class="icon icon-plug"></i><span class="nav-text">Sales</span></a>
+                       <ul aria-expanded="false">
+                           <li><a href="./">Invoice</a></li>
+                           <li><a href="./">Credit Note</a></li>
+                        
+                       </ul>
+                   </li>
+   
+                   <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                       class="icon icon-plug"></i><span class="nav-text">Purchase</span></a>
+               <ul aria-expanded="false">
+                   <li><a href="./">Invoice</a></li>
+                   <li><a href="./">Credit Note</a></li>
+                   <li>
+           <a href="{% url 'getlist' %}">Purchase Bill</a>
+           <a href="{% url 'check_user_bills' %}">
+               <i class="fa-sharp fa-solid fa-plus"></i>
+           </a>
+       </li>
+           <li><a href="">History</a></li>  
+                                 
+               </ul>
+           </li>
+        
+                   
+                   <li><a href="/" aria-expanded="false"><i class="icon icon-globe-2"></i><span class="nav-text">Stock Report</span></a></li>
+               </ul>
+           </div>
+       </div>        
+   
+   
+       </div>
+       <!--**********************************
+           Sidebar end
+       ***********************************-->
+       {% block content %}{% endblock content %}
+       <!-- Required vendors -->
+    <script src="static/assets/vendor/global/global.min.js"></script>
+    <script src="static/assets/js/quixnav-init.js"></script>
+    <script src="static/assets/js/custom.min.js"></script>
+   
+   
+    <!-- Vectormap -->
+    <script src="static/assets/vendor/raphael/raphael.min.js"></script>
+    <script src="static/assets/vendor/morris/morris.min.js"></script>
+   
+   
+    <script src="static/assets/vendor/circle-progress/circle-progress.min.js"></script>
+    <script src="static/assets/vendor/chart.js/Chart.bundle.min.js"></script>
+   
+    <script src="static/assets/vendor/gaugeJS/dist/gauge.min.js"></script>
+   
+    <!--  flot-chart js -->
+    <script src="static/assets/vendor/flot/jquery.flot.js"></script>
+    <script src="static/assets/vendor/flot/jquery.flot.resize.js"></script>
+   
+    <!-- Owl Carousel -->
+    <script src="static/assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+   
+    <!-- Counter Up -->
+    <script src="static/assets/vendor/jqvmap/js/jquery.vmap.min.js"></script>
+    <script src="static/assets/vendor/jqvmap/js/jquery.vmap.usa.js"></script>
+    <script src="static/assets/vendor/jquery.counterup/jquery.counterup.min.js"></script>
+   
+   
+    <script src="static/assets/js/dashboard/dashboard-1.js"></script>
+    <!-- Add this to your template -->
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+   
+   
+   
+   
+   
+   
+   </div>
+   <script>
+       document.addEventListener("DOMContentLoaded", function() {
+           // Get references to the relevant form elements
+           var cnameSelect = document.getElementById("cname");
+           var cnoInput = document.getElementById("cno");
+           var billingAddressTextarea = document.getElementById("billingAddress");
+           var balanceInput = document.getElementById("balance");
+   
+           // Add an event listener to the customer select element
+           cnameSelect.addEventListener("change", function() {
+               // Get the selected option
+               var selectedOption = cnameSelect.options[cnameSelect.selectedIndex];
+   
+               // Update the corresponding fields based on the selected option's data attributes
+               cnoInput.value = selectedOption.getAttribute("data-phone") || "";
+               billingAddressTextarea.value = selectedOption.getAttribute("data-address") || "";
+               balanceInput.value = selectedOption.getAttribute("data-balance") || "";
+           });
+       });
+   </script>
+   <!-- Add this script section at the end of your HTML body -->
+   <script>
+       document.addEventListener("DOMContentLoaded", function() {
+           // Get the current date in the format 'YYYY-MM-DD'
+           var currentDate = new Date().toISOString().split('T')[0];
+   
+           // Set the default value for the 'bdate' input field to the current date
+           document.getElementById("bdate").value = currentDate;
+       });
+   </script>
+
+   <div class="content-body">
+    <!-- row -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="stat-widget-two card-body">
+                        <div class="stat-content">
+                            <div class="row">
+                                <div class="container" >
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="fromDate" style="color: black; margin-bottom: 1vh; margin-right:23vh;">From Date:</label>
+                                                <input type="date" class="form-control h-100 border-secondary" id="fromDate" style="color: black; background-color: white;" onchange="filterDates()"> 
+                                            </div>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <div class="form-group">
+                                                <label for="toDate" style="color: black; margin-bottom: 1vh;margin-right:25vh;">To Date:</label>
+                                                <input type="date" class="form-control h-100 border-secondary" id="toDate" style="color: black; background-color: white;" onchange="filterDates()">
+                                            </div>
+                                        </div>
+                                       
+                                            <button class="btn mt-3" type="button" onclick="ExportToExcel()" style="margin-left:250px;">
+                                                <span><img width="22px" src="{% static 'assets/excel2.png' %}" alt="no img"></span>
+                                                <br><span style="color: black; font-size: small; font-weight: bold;">Excel</span>
+                                            </button>
+            
+                                            <button class="btn mt-3" type="button" onclick="printfunction()" style="margin-right: 2vh;">
+                                                <span><img width="30px" src="{% static 'images/printer.jpeg' %}" alt="no img"></span>
+                                                <br><span style="color: black; font-size: small; font-weight: bold;">Print</span>
+                                            </button>
+            
+                                            <button class="btn mt-3" type="button" data-toggle="modal" data-target="#excelModal" onclick="excelmodel()">
+                                                <span><img width="30px" src="{% static 'images/share.png' %}" alt="no img"></span>
+                                                <br><span style="color: black; font-size: small; font-weight: bold;">Import</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+
+                
+                <div class="row" id="calcdiv"  >
+                    <div class="col-md-12 d-flex" style="margin-left: 80px;">
+                        <div class="paiddiv">
+                            <p style="margin-bottom: 5px;"> Paid</p>
+                            <p style="font-size:large;" > &#8377; <span id="paidval"></span></p>
+                        </div>
+                        <div class="tplus" style="margin-left:18px;">
+                            <i class="fa fa-plus border-dark " aria-hidden="true" style="color: black;"></i>
+                        </div>
+                        <div class="unpaiddiv" style="margin-left:18px;">
+                            <p style="margin-bottom: 5px;"> Unpaid</p>
+                            <p style="font-size:large;"> &#8377; <span id="unpaidval"></span></p>
+                        </div>
+                        <div class="tequal" style="margin-left:12px;">
+                            <i class="fa-solid fa fa-equals" style="color: black;"></i>
+                        </div>
+                        <div class="totaldiv" style="margin-left:18px;">
+                            <p style="margin-bottom: 5px;"> Total</p>
+                            <p style="font-size:large;"> &#8377; <span id="totalval"></span></p>
+                        </div>
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+    </div>
+</div>
+
+        <div class="row pt-0 m-0" >
+            <div class="card p-0 bg-light bs" style="height: 36rem;width:190%;">
+                <div class="row m-0 p-0 pt-3">
+                    <div class="col-sm-14 col-lg-3">
+                        <h4 class="tb fw-bolder pt-2 text-secondary">PURCHASE BILLS</h4>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <input id="search_input" style="padding-inline-start: 2rem; margin-left: 1vh;" class="w-100 border-secondary text-dark pt-1 pb-1 pe-1 rounded" type="text" placeholder=" Search">
+                    </div>
+                    
+                    <div class="col-md-6"></div>
+                    <div class="col-md-3">
+                        <a class="btn btn-primary bg-gradient" href="{% url 'purchase' %}" style="color: white;"> 
+                            <i class="fa fa-plus border-dark " aria-hidden="true" style="color: white;"></i> &nbsp;Add Purchase Bill
+                        </a>
+                    </div>
+                </div>
+
+                <div class="row" >
+                    <div class="col-md-12" style="margin-left: 2vh;width:150vh;">
+                        <div class="mt-5" style="overflow: scroll;height: 28rem; width: 97%;" id="tablediv">
+                            <table class="table table-bordered table-info table-striped tb table-responsive w-100" id="purchaseBillTable"  style="text-align: center;">
+                                <thead >
+                                    <tr class="fs-3 tb">
+                                        <th class="bg-secondary text-white" style="width:20vh;">
+                                            DATE 
+                                            <a class="extra text-white" onclick="toggleDropdown(0)">&nbsp;<i class="fa fa-filter" aria-hidden="true"></i></a>
+                                            <div class="dropdown-content" id="dropdownContent0">
+                                                {% comment %} <label for="filterInput0" style="color: black; text-align: left;">Equal To</label> {% endcomment %}
+                                                 {% comment %} <input type="date" id="filterInput0"  /> {% endcomment %}
+                                                {% comment %} <a class="btn btn-info" onclick="cleardropdown(0)">Clear</a> 
+                                                &nbsp;<a class="btn btn-info" onclick="filterTable(0)">Apply</a>  {% endcomment %}
+                                            </div>
+                                        </th>
+                                        <th class="bg-secondary text-white">
+                                            BILL NO 
+                                            <a class="extra text-white" onclick="toggleDropdown(1)">&nbsp;<i class="fa fa-filter" aria-hidden="true"></i></a>
+                                            <div class="dropdown-content" id="dropdownContent1">
+                                                {% comment %} <label for="filterInput1" style="color: black; text-align: left;">Equal To</label> {% endcomment %}
+                                                {% comment %} <input type="text" id="filterInput1"  /> {% endcomment %}
+                                                {% comment %} <a class="btn btn-info" onclick="cleardropdown(1)">Clear</a> 
+                                                &nbsp;<a class="btn btn-info" onclick="filterTable(1)">Apply</a> {% endcomment %}
+                                            </div>
+                                        </th>
+                                        <th class="bg-secondary text-white">
+                                            PARTY NAME 
+                                            <a class="extra text-white" onclick="toggleDropdown(2)">&nbsp;<i class="fa fa-filter" aria-hidden="true"></i></a>
+                                            <div class="dropdown-content" id="dropdownContent2">
+                                                {% comment %} <label for="filterInput2" style="color: black; text-align: left;">Equal To</label> {% endcomment %}
+                                                {% comment %} <input type="text" id="filterInput2"  /> {% endcomment %}
+                                                {% comment %} <a class="btn btn-info" onclick="cleardropdown(2)">Clear</a> 
+                                                &nbsp;<a class="btn btn-info" onclick="filterTable(2)">Apply</a> {% endcomment %}
+                                            </div>
+                                        </th>
+                                        <th class="bg-secondary text-white">
+                                            PAYMENT TYPE
+                                            <a class="extra text-white" onclick="toggleDropdown(3)">&nbsp;<i class="fa fa-filter" aria-hidden="true"></i></a>
+                                            <div class="dropdown-content" id="dropdownContent3">
+                                                {% comment %} <label for="filterInput3" style="color: black; text-align: left;">Equal To</label> {% endcomment %}
+                                                {% comment %} <input type="text" id="filterInput3"  /> {% endcomment %}
+                                                {% comment %} <a class="btn btn-info" onclick="cleardropdown(3)">Clear</a> 
+                                                &nbsp;<a class="btn btn-info" onclick="filterTable(3)">Apply</a> {% endcomment %}
+                                            </div>
+                                        </th>
+                                        <th class="bg-secondary text-white">
+                                            AMOUNT
+                                            <a class="extra text-white" onclick="toggleDropdown(4)">&nbsp;<i class="fa fa-filter" aria-hidden="true"></i></a>
+                                            <div class="dropdown-content" id="dropdownContent4">
+                                                {% comment %} <label for="filterInput4" style="color: black; text-align: left;">Equal To</label> {% endcomment %}
+                                                {% comment %} <input type="text" id="filterInput4" /> {% endcomment %}
+                                                {% comment %} <a class="btn btn-info" onclick="cleardropdown(4)">Clear</a> 
+                                                &nbsp;<a class="btn btn-info" onclick="filterTable(4)">Apply</a> {% endcomment %}
+                                            </div>
+                                        </th>
+                                        <th class="bg-secondary text-white">
+                                            BALANCE
+                                            <a class="extra text-white" onclick="toggleDropdown(5)">&nbsp;<i class="fa fa-filter" aria-hidden="true"></i></a>
+                                            <div class="dropdown-content" id="dropdownContent5">
+                                                {% comment %} <label for="filterInput5" style="color: black; text-align: left;">Equal To</label> {% endcomment %}
+                                                {% comment %} <input type="text" id="filterInput5" /> {% endcomment %}
+                                                {% comment %} <a class="btn btn-info" onclick="cleardropdown(5)">Clear</a> 
+                                                &nbsp;<a class="btn btn-info" onclick="filterTable(5)">Apply</a> {% endcomment %}
+                                            </div>
+                                        </th>
+                                        <th class="bg-secondary text-white extra" >
+                                            ACTION
+                                            &nbsp; <a onclick="toggleDropdown(6)"><i class="fa fa-filter" aria-hidden="true"></i></a>
+                                            <div class="dropdown-content" id="dropdownContent6">
+                                                {% comment %} <label for="filterInput6" style="color: black; text-align: left;">Equal To</label> {% endcomment %}
+                                                {% comment %} <input type="text" id="filterInput6" /> {% endcomment %}
+                                                {% comment %} <a class="btn btn-info" onclick="cleardropdown(6)">Clear</a> 
+                                                &nbsp;<a class="btn btn-info" onclick="filterTable(6)">Apply</a> {% endcomment %}
+                                            </div>
+                                        </th>
+                                        <th class="bg-secondary text-white extra" style="width:18vh;">
+                                            BY
+                                            &nbsp; <a onclick="toggleDropdown(7)"><i class="fa fa-filter" aria-hidden="true"></i></a>
+                                            <div class="dropdown-content" id="dropdownContent7">
+                                                {% comment %} <label for="filterInput7" style="color: black; text-align: left;">Equal To</label> {% endcomment %}
+                                                {% comment %} <input type="text" id="filterInput7" /> {% endcomment %}
+                                                {% comment %} <a class="btn btn-info" onclick="cleardropdown(7)">Clear</a> 
+                                                &nbsp;<a class="btn btn-info" onclick="filterTable(7)">Apply</a> {% endcomment %}
+                                            </div>
+                                        </th>
+                                        <th class="bg-secondary text-white extra" style="width:10vh;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for p in pbill %}
+                                    <tr>
+                                        <td class="clickable-row" style="color: black;" data-href="details_purchasebill/{{ p.id }}">{{p.bill_date | date:'d-m-Y'}}</td>
+                                        <td class="clickable-row" style="color: black;" data-href="details_purchasebill/{{ p.id }}">{{p.bill_number}}</td>
+                                        <td class="clickable-row" style="color: black;" data-href="details_purchasebill/{{ p.id }}">{{p.customer.party_name}}</td>
+                                        <td class="clickable-row" style="color: black;" data-href="details_purchasebill/{{ p.id }}">{{p.payment_method}}</td>
+                                        <td class="clickable-row" style="color: black;" data-href="details_purchasebill/{{ p.id }}">{{p.grand_total}}</td>
+                                        <td class="clickable-row" style="color: black;" data-href="details_purchasebill/{{ p.id }}">{{p.totalbalance}}</td>
+                                        <td class="clickable-row extra" style="color: black;" data-href="details_purchasebill/{{ p.id }}">Created</td>
+                                        <td class="clickable-row extra" style="color: black;" data-href="details_purchasebill/{{ p.id }}">{{p.company.company_name}}</td>
+                                        <td class="pt-3 m-0 extra">
+                                            <div class="btn-group">
+                                                <button style="border: none;background: none;" type="button" class="ropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown" aria-expanded="false">
+                                                    <span class="fa fa-ellipsis-v text-dark fs-1 ps-"></span>
+                                                </button>
+                                                <ul class="dropdown-menu">
+                                                    <li><a class="dropdown-item fw-bold tb hide_table_text_v" href="{% url 'view' p.id %}"><span class="fa fa-eye pe-2 tg"></span> View </a></li>
+                                                    <li><a class="dropdown-item fw-bold tb hide_table_text_v" href="{% url 'edit_purchase' %}"><span class="fa fa-edit pe-2 tj"></span> Edit</a></li>
+                                                    <li><a class="dropdown-item fw-bold tb hide_table_text_v" href="{% url 'history' %}"><span class="fa fa-history pe-2 th"></span> History</a></li>
+                                                    <li><a class="dropdown-item fw-bold tb hide_table_text_d" onclick="deletepbill('{{p.id}}')"><span class="fa fa-trash-alt tr" style="padding-inline-start: 0.1rem;padding-inline-end:0.7rem ;"></span> Delete</a></li>
+                                                </ul>
+                                            </div>
+                                        </td>
+                                        <td style="color: black;" hidden>{{p.advance}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+
+                            <p id="emptyMessage" style="text-align: center;">
+                                <br><br><br>
+                                No Transactions to Show
+                            </p>
+
+                            <table id="excelbilltable" hidden>
+                                <thead >
+                                    <tr class="fs-2 tb" >
+                                        <th> DATE </th>
+                                        <th> BILL NO </th>
+                                        <th> PARTY NAME </th>
+                                        <th> PAYMENT TYPE </th>
+                                        <th> AMOUNT </th>
+                                        <th> BALANCE </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for p in pbill %}
+                                    <tr>
+                                        <td>{{p.billdate | date:'d-m-Y'}}</td>
+                                        <td>{{p.billno}}</td>
+                                        <td>{{p.party.party_name}}</td>
+                                        <td>{{p.pay_method}}</td>
+                                        <td>{{p.grandtotal}}</td>
+                                        <td>{{p.balance}}</td>
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+
+                            <table id="billtablemodel" hidden>
+                                <thead>
+                                    <tr>
+                                        <th>Customer Name</th>
+                                        <th>Customer Email</th>
+                                        <th>Bill Date</th>
+                                        <th>Supply State</th>
+                                        <th>Payment Method</th>
+                                        <th>Payment No</th>
+                                        <th>Adjustment</th>
+                                        <th>Advance</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td>State/Other State</td>
+                                        <td>Cash/Cheque/UPI/Bank Name</td>
+                                        <td>Cheque ID/UPI ID/Bank no</td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+
+                            <table id="billtableitemmodel" hidden>
+                                <thead>
+                                    <tr>
+                                        <th>Purchase Bill</th>
+                                        <th>Product Name</th>
+                                        <th>Product HSN</th>
+                                        <th>Quantity</th>
+                                        <th>Discount</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Corresponding Row no from PurchaseBillModel </td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                        <td></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>                        
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready( function () {
+        // Initialize DataTables
+        var table = $('#purchaseBillTable').DataTable();
+    
+        // Add search input
+        $('#search_input').on('keyup', function () {
+            table.search(this.value).draw();
+        });
+    } );
+    </script>
+
+
+    
+<div class="modal" id="excelModal" tabindex="-1" role="dialog" aria-labelledby="excelModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="excelModalLabel">Upload File
+                <label for="" style="color: red; font-size: x-small;" >* Refer Downloaded Sheet For Format </label><br></h5>
+                <button type="button" class="btn close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true" style="font-size: x-large;">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="excelForm" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="file" style="color: black;">Choose Excel File for Purchase Bill- </label> <br>
+                        <input type="file" class="form-control-file" id="billfile" name="billfile" accept=".xls, .xlsx"><br><br>
+                        
+
+                        <label for="file" style="color: black;">Choose Excel File for Purchase Bill Products- </label> <br>
+                        <input type="file" class="form-control-file" id="prdfile" name="prdfile" accept=".xls, .xlsx"><br>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="uploadFile()" data-dismiss="modal">Upload</button>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+        
+</body>
+
+</html>   

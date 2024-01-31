@@ -1,0 +1,210 @@
+{% comment %}  Name: Mary C Wilson {% endcomment %}
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title>Billing Software </title>
+        <link rel="shortcut icon" type="image/png" href="{% static 'img/logo/logo3.png' %}" />
+        <link rel="stylesheet" href="static/assets/vendor/owl-carousel/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="static/assets/vendor/owl-carousel/css/owl.theme.default.min.css">
+        <link href="static/assets/vendor/jqvmap/css/jqvmap.min.css" rel="stylesheet">
+        <link href="static/css/style.css" rel="stylesheet">
+        <script src="https://kit.fontawesome.com/fbe819dd43.js" crossorigin="anonymous"></script>
+    
+    
+    </head>
+    
+<body>
+     <!--*******************
+        Preloader start
+    ********************-->
+    <div id="preloader">
+        <div class="sk-three-bounce">
+            <div class="sk-child sk-bounce1"></div>
+            <div class="sk-child sk-bounce2"></div>
+            <div class="sk-child sk-bounce3"></div>
+        </div>
+    </div>
+    <!--*******************
+        Preloader end
+    ********************-->
+
+
+    <!--**********************************
+        Main wrapper start
+    ***********************************-->
+    <div id="main-wrapper" >
+
+        <!--**********************************
+            Nav header start
+        ***********************************-->
+        <div class="nav-header">
+            <a href="" class="brand-logo">
+                <img class="logo-abbr" src="static/img/logo/logo3.png" alt="">
+                <p style="margin-top: 10px;"> BILLING SOFTWARE</p>
+                <img class="logo-compact" src="./images/logo-text.png" alt="">
+                <img class="brand-title" src="./images/logo-text.png" alt="">
+            </a>
+
+            <div class="nav-control">
+                <div class="hamburger">
+                    <span class="line"></span><span class="line"></span><span class="line"></span>
+                </div>
+            </div>
+        </div>
+        <!--**********************************
+            Nav header end
+        ***********************************-->
+
+        <!--**********************************
+            Header start
+        ***********************************-->
+        <div class="header">
+            <div class="header-content">
+                <nav class="navbar navbar-expand">
+                    <div class="collapse navbar-collapse justify-content-between">
+                        <div class="header-left">
+                            <div class="search_bar dropdown">
+                                <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
+                                    <i class="mdi mdi-magnify"></i>
+                                </span>
+                                <div class="dropdown-menu p-0 m-0">
+                                    <form>
+                                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+
+                        <ul class="navbar-nav header-right">
+        
+                            <li class="nav-item dropdown header-profile">
+                                <a class="nav-link" href="#" role="button" data-toggle="dropdown">
+                                    <i class="mdi mdi-account"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right">
+                                    <a href="{% url 'profile' %}" class="dropdown-item">
+                                        <i class="icon-user"></i>
+                                        <span class="ml-2">Profile </span>
+                                    </a>
+
+                                    <a href="{% url 'logout' %}" class="dropdown-item">
+                                        <i class="icon-key"></i>
+                                        <span class="ml-2">Logout </span>
+                                    </a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    <div class="quixnav">
+        <div class="quixnav-scroll">
+            <ul class="metismenu" id="menu">
+                <li><a href="{% url 'homepage' %}" aria-expanded="false"><i class="icon icon-world-2"></i><span class="nav-text">Dashboard</span></a></li>
+                <li><a href="/" aria-expanded="false"><i class="icon icon-single-04"></i><span class="nav-text">Parties</span></a></li>
+                <li><a href="/" aria-expanded="false"><i class="icon icon-globe-2"></i><span class="nav-text">Item</span></a></li>
+
+                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                            class="icon icon-plug"></i><span class="nav-text">Sales</span></a>
+                    <ul aria-expanded="false">
+                        <li><a href="./">Invoice</a></li>
+                        <li><a href="./">Credit Note</a></li>
+                     
+                    </ul>
+                </li>
+
+                <li><a class="has-arrow" href="javascript:void()" aria-expanded="false"><i
+                    class="icon icon-plug"></i><span class="nav-text">Purchase</span></a>
+            <ul aria-expanded="false">
+                <li><a href="./">Invoice</a></li>
+                <li><a href="./">Credit Note</a></li>
+                <li><a href="{% url 'getlist' %}">Purchase Bill</a><a href="{% url 'check_user_bills' %}"><i class="fa-sharp fa-solid fa-plus"></i></a></li>
+                       
+                <li><a href="">History</a></li>     
+            </ul>
+        </li>
+                
+                <li><a href="/" aria-expanded="false"><i class="icon icon-globe-2"></i><span class="nav-text">Stock Report</span></a></li>
+            </ul>
+        </div>
+    </div>        
+
+
+    </div>
+    <!--**********************************
+        Sidebar end
+    ***********************************-->
+    {% block content %}{% endblock content %}
+    <!-- Required vendors -->
+ <script src="static/assets/vendor/global/global.min.js"></script>
+ <script src="static/assets/js/quixnav-init.js"></script>
+ <script src="static/assets/js/custom.min.js"></script>
+
+
+ <!-- Vectormap -->
+ <script src="static/assets/vendor/raphael/raphael.min.js"></script>
+ <script src="static/assets/vendor/morris/morris.min.js"></script>
+
+
+ <script src="static/assets/vendor/circle-progress/circle-progress.min.js"></script>
+ <script src="static/assets/vendor/chart.js/Chart.bundle.min.js"></script>
+
+ <script src="static/assets/vendor/gaugeJS/dist/gauge.min.js"></script>
+
+ <!--  flot-chart js -->
+ <script src="static/assets/vendor/flot/jquery.flot.js"></script>
+ <script src="static/assets/vendor/flot/jquery.flot.resize.js"></script>
+
+ <!-- Owl Carousel -->
+ <script src="static/assets/vendor/owl-carousel/js/owl.carousel.min.js"></script>
+
+ <!-- Counter Up -->
+ <script src="static/assets/vendor/jqvmap/js/jquery.vmap.min.js"></script>
+ <script src="static/assets/vendor/jqvmap/js/jquery.vmap.usa.js"></script>
+ <script src="static/assets/vendor/jquery.counterup/jquery.counterup.min.js"></script>
+
+
+ <script src="static/assets/js/dashboard/dashboard-1.js"></script>
+
+
+</div>
+<br><br>
+<div class="content-body">
+    
+    <!-- row -->
+    <div class="container-fluid">
+        
+        <div class="row">
+            <br><br><br><br>
+            <div class="col-md-12">
+                
+                <div class="card">
+                    <br><br><br>
+                    <div class="stat-widget-two card-body" style="display: flex;">
+                        <div style="flex: 1; margin-right: 20px;">
+                            <!-- Add an image to the left side -->
+                            <img src="static/img/b1.jpg" alt="Your Image" style="max-width: 100%; height: 100%;">
+                        </div>
+
+                        <!-- Logo, content, and button on the right side -->
+                        <div style="flex: 1; overflow: hidden;">
+                            <img class="logo-abbr" src="static/img/logo/logo3.png" alt=""><br>
+                            <h3>BILLING SOFTWARE</h3>
+                            <h6>Welcome to Billing software. We are supporting to purchase an Item. <br>So first bill to registration. Please click the button.</h6><br>
+                            <a href="{% url 'purchase' %}"><button type='submit'>Click Here</button></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
