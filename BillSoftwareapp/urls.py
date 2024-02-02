@@ -46,5 +46,8 @@ urlpatterns = [
     path('sharepdftomail/<int:id>',views.sharepdftomail,name="sharepdftomail"),
     path('import_purchase_bill',views.import_purchase_bill,name='import_purchase_bill'),
     path('billhistory',views.billhistory,name='billhistory'),
+    path('view_item',views.view_item,name='view_item'),
+    path('parties_add_page',views.parties_add_page,name='parties_add_page'),
+    path('parties_table',views.parties_table,name='parties_table'),
 ]
 

@@ -2,12 +2,6 @@
 {% block content %}
 {% load static %}
 
-{% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"> {% endcomment %}
-{% comment %} <script src="path/to/jquery.min.js"></script> {% endcomment %}
-{% comment %} <script src="path/to/bootstrap.min.js"></script> {% endcomment %}
-
-{% comment %} <script src="{% static 'path/to/jquery.min.js' %}"></script> {% endcomment %}
-{% comment %} <script src="{% static 'path/to/bootstrap.min.js' %}"></script> {% endcomment %}
 
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script> 
    
@@ -15,7 +9,7 @@
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-      
+ 
         
     <style>
         #input,select,textarea{
@@ -110,9 +104,11 @@
                                                             {% endif %}
                                                         {% endfor %}
                                                     </select> &nbsp;&nbsp;&nbsp;
-                                                    <button id="modal_closing" type="button" style="background-color:rgb(61, 68, 101);" class="btn" data-bs-toggle="modal" data-bs-target="#customercreation" data-bs-whatever="@mdo">
+                                                    <button id="addPartyButton" type="button" style="background-color: rgb(61, 68, 101);" class="btn" data-bs-toggle="modal" data-bs-target="#customercreation" data-bs-whatever="@mdo">
                                                         <span class="fa fa-plus"></span>
                                                     </button>
+                                                    
+                                                    
                                                 </div>
                                                 <div class="mt-1 d-flex" >
                                                     &nbsp;<span id="balancediv" style="display: none; color: black;"> Available Balance : <span id="balval"></span></span>
@@ -546,10 +542,10 @@
                     <div class="modal-content" style="background-color: rgb(61, 68, 101)">
                         <div class="modal-header" style="background-color: rgb(61, 68, 101)">
                             <h3 class="m-3 text-light">ADD PARTY</h3>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            <button type="button" style="font-size:140px;" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body" style="background-color:  rgb(61, 68, 101);">
-                            <form action="" method="POST" autocomplete="off" id="modalCustomer"> 
+                            <form action="{% url 'savecustomer' %}" method="POST" autocomplete="off" id="modalCustomer">
                                 {% csrf_token %}
                                 <div class="bg-light bs p-4 rounded mb-5">
                                     <div id="main_form_div">
@@ -662,6 +658,7 @@
                                                         </div>
                                                         <br><br>
                                                     </div>
+                                                    
                                                 </div>
                                                 <br><br>
                                             </div>
@@ -714,8 +711,6 @@
     </div>
 
 
-    
-    
     
     <script>
         $(document).ready(function(){
@@ -919,41 +914,6 @@
         }
     </script>
     
-    <script>
-        $(document).ready(function() {
-            $("#pay_method").change(function() {
-                var x=$('#pay_method').val();
-                if(x==='Cash'){
-                    $('#chequediv').hide()
-                    $('#bnkdiv').hide()
-                    $('#upidiv').hide()
-                    document.getElementById('cheque_id').value=null
-                    document.getElementById('upi_id').value=null
-                    document.getElementById('bnk_id').value=null
-                } else if(x==='Cheque') {
-                    $('#chequediv').show()
-                    $('#bnkdiv').hide()
-                    $('#upidiv').hide()
-                    document.getElementById('upi_id').value=null
-                    document.getElementById('bnk_id').value=null
-                } else if(x==='UPI') {
-                    $('#upidiv').show()
-                    $('#bnkdiv').hide()
-                    $('#chequediv').hide()
-                    document.getElementById('cheque_id').value=null
-                    document.getElementById('bnk_id').value=null
-                } else {
-                    $('#bnkdiv').show()
-                    $('#chequediv').hide()
-                    $('#upidiv').hide()
-                    document.getElementById('cheque_id').value=null
-                    document.getElementById('upi_id').value=null
-    
-                   
-                }
-            });
-        });
-    </script>
     
     <script>
         function changeprd(id,value){
@@ -1039,145 +999,138 @@
             }
             calc()
         });
-       $(document).on("click", "#customersave", function(){
-    if ($('#toPayRadio').is(':checked')) {
-        pay = $('#toPayRadio').val()
-    } else {
-        pay = $('#toReceiveRadio').val()
-    }
-    $.ajax({
-        type: 'POST',
-        url: "{% url 'savecustomer' %}",
-        data: {
-            name: $('#partyname').val(),
-            email: $("#partyemail").val(),
-            mobile: $("#partyphno").val(),
-            splystate: $("#splystate").val(),
-            baddress: $("#baddress").val(),
-            gsttype: $("#modalgsttype").val(),
-            gstin: $("#gstin").val(),
-            partydate: $("#partydate").val(),
-            paytype: pay,
-            openbalance: $("#openbalance").val(),
-            credit_limit: $("#crd_lmt").val(),
-            csrfmiddlewaretoken: '{{ csrf_token }}',
-        },
-        success: function (response) {
-            document.getElementById("modalCustomer").reset();
-            $('#customercreation').modal('hide');
-            
-            // Extract the new customer ID and name from the response
-            var newCustomerId = response.new_customer_id;
-            var newCustomerName = response.new_customer_name;
-
-            // Call the function to update the dropdown with the new option
-            updateCustomerDropdown();
-
-            // Optionally, select the newly added customer
-            var $select = $(document.getElementById('customer'));
-            var selectize = $select[0].selectize;
-            selectize.setValue(newCustomerId);
-        },
-    });
-});
-
-function updateCustomerDropdown() {
-    // Make an AJAX request to get the updated list of customers
-    $.ajax({
-        url: "{% url 'cust_dropdown' %}",
-        type: "GET",
-        dataType: "json",
-        data: $(this).serialize(),
-        csrfmiddlewaretoken: '{{ csrf_token }}',
-        success: function (response) {
-            id_list = response.id_list
-            party_list = response.party_list
-            var $select = $(document.getElementById('customer'));
-            var selectize = $select[0].selectize;
-
-            // Clear existing options
-            selectize.clearOptions();
-
-            // Add the updated list of customers
-            for (let i = 0; i < id_list.length; i++) {
-                selectize.addOption({ value: id_list[i], text: party_list[i] });
+    
+        $(document).on("click", "#customersave", function(){
+            if ($('#toPayRadio').is(':checked')) {
+                pay = $('#toPayRadio').val()
+            } else {
+                pay = $('#toReceiveRadio').val()
             }
-
-            // Refresh and display the updated options
-            selectize.refreshOptions();
-        },
+            $.ajax({
+    
+                type : 'POST',
+                url:"{% url 'savecustomer' %}",
+                data:{
+                    name : $('#partyname').val(),
+                    email : $("#partyemail").val(),
+                    mobile :$("#partyphno").val(),
+                    splystate : $("#splystate").val(),
+                    baddress : $("#baddress").val(),
+                    gsttype :$("#modalgsttype").val(),
+                    gstin :$("#gstin").val(),
+                    partydate : $("#partydate").val(),
+                    paytype : pay,
+                    openbalance : $("#openbalance").val(),
+                    credit_limit : $("#crd_lmt").val(),
+                    add1 : $("#additional1").val(),
+                    add2 : $("#additional2").val(),
+                    add3 : $("#additional3").val(),
+                    csrfmiddlewaretoken: '{{ csrf_token }}',
+                },
+                success: function(response) {
+                    document.getElementById("modalCustomer").reset();
+                    $('#customercreation').modal('hide');
+                    reloadCustomer();
+                },
+            });   
+        });
+    
+        function reloadCustomer() {
+            $.ajax({
+                url: "{% url 'cust_dropdown' %}",
+                type: "GET",
+                dataType: "json",
+                data: $(this).serialize(),
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+    
+                success: function(response) {
+                    id_list = response.id_list
+                    party_list = response.party_list
+                    var $select = $(document.getElementById('customer'));
+                    var selectize = $select[0].selectize;
+                    for(let i=0; i<id_list.length;i++){
+                        selectize.addOption({value:id_list[i],text:party_list[i]});
+                    }
+                    selectize.setValue("");
+                },
+            });
+        }
+<script>
+    $(document).ready(function () {
+        // Load customer data when the page is ready
+        reloadCustomer();
     });
-}
+</script>c:\Users\TOSHIBA\zoho\vyaparapp\templates\company\purchasebilladd.htmlc:\Users\TOSHIBA\zoho\vyaparapp\templates\company\purchasebilladd.html
 
-
-        $(document).on("click", "#itemsave", function(){
+    
+        $(document).on("click","#itemsave",function(){
             var item_name = document.getElementById('item_name').value;
     
             if ($('#inclusive').prop('checked')) {
-                tax = $('#inclusive').val();
+                tax= $('#inclusive').val();
             } 
-            else {
+            else{
                 tax = $('#check').val();
             }
     
             if (item_name === ''){
                 alert('Please provide an Item Name');
-            } else {
+            }else{
                 $.ajax({
-                    type: 'POST',
-                    url: "{% url 'saveitem' %}",
-                    data: {
-                        name: $("#item_name").val(),
-                        unit: $("#unit").val(),
-                        hsn: $("#hsn").val(),
-                        taxref: tax,
-                        sell_price: $("#saleprice").val(),
-                        cost_price: $("#purprice").val(),
-                        intra_st: $("#intra_st").val(),
-                        inter_st: $("#inter_st").val(),
-                        itmdate: $("#itmdate").val(),
-                        stock: $("#stock").val(),
-                        itmprice: $("#itmprice").val(),
-                        minstock: $("#minstock").val(),
+                    type : 'POST',
+                    url:"{% url 'saveitem' %}",
+                    data:{
+                        name : $("#item_name").val(),
+                        unit : $("#unit").val(),
+                        hsn : $("#hsn").val(),
+                        taxref : tax,
+                        sell_price : $("#saleprice").val(),
+                        cost_price : $("#purprice").val(),
+                        intra_st : $("#intra_st").val(),
+                        inter_st : $("#inter_st").val(),
+                        itmdate : $("#itmdate").val(),
+                        stock : $("#stock").val(),
+                        itmprice : $("#itmprice").val(),
+                        minstock : $("#minstock").val(),
                         csrfmiddlewaretoken: '{{ csrf_token }}',
                     },
+                
                     success: function(response) {
                         document.getElementById("modalItem").reset();
                         $('#newitem').modal('hide');
-    
-                        // Fetch and update the dropdown without a page reload
-                        updateItemDropdown();
+                        reloadItem();
                     },
                 });  
             }      
         });
     
-        function updateItemDropdown() {
+        function reloadItem() {
             $.ajax({
                 url: "{% url 'item_dropdown' %}",
                 type: "GET",
                 dataType: "json",
-                data: { csrfmiddlewaretoken: '{{ csrf_token }}' },
+                data: $(this).serialize(),
+                csrfmiddlewaretoken: '{{ csrf_token }}',
+    
                 success: function(data) {
-                    var selectize = $('#product1')[0].selectize;
-        
-                    // Clear existing options
-                    selectize.clearOptions();
-        
-                    // Add new options
-                    for (var i = 0; i < data.id_list.length; i++) {
-                        selectize.addOption({ value: data.id_list[i], text: data.product_list[i] });
+                    id_list = data.id_list
+                    product_list = data.product_list
+                    var table = document.getElementById('tab_logic');
+                    var rows = table.getElementsByTagName('tbody')[0].getElementsByTagName('tr');
+                    for (var i = 1; i <= rows.length; i++) {
+                        var $select = $(document.getElementById('product'+i));
+                        var selectize = $select[0].selectize;
+                        for(let i=0; i<id_list.length;i++){
+                            selectize.addOption({value:id_list[i],text:product_list[i]});
+                        }
                     }
-        
-                    // Set an empty value
-                    selectize.setValue("");
                 },
                 error: function(xhr, status, error) {
                     console.error(xhr.responseText);
                 }
             });
         }
-
+    
         $(document).ready(function () {
             $('#customer').on('change', function() {
                 $.ajax({
@@ -1247,7 +1200,7 @@ function updateCustomerDropdown() {
                 roinc++
                 $('#items-table-body').append(
                     `<tr id='addr0${roinc}'>
-                        <td class = 'nnum' style="text-align: center; color:black; width:2%"">${roinc}</td>
+                        <td class = 'nnum' style="text-align: center; width:2%"">${roinc}</td>
     
                         <td style="width:21%">
                             <div class="d-flex">
@@ -1260,7 +1213,7 @@ function updateCustomerDropdown() {
                                     {% endfor %}
                                 </select>&nbsp;&nbsp;&nbsp;
     
-                                <button id="modal_closing" type="button" class="btn" style="background-color:rgb(61, 68, 101);" data-bs-toggle="modal" data-bs-target="#newitem" data-bs-whatever="@mdo">
+                                <button id="modal_closing" type="button" class="btn btn-outline-info" data-bs-toggle="modal" data-bs-target="#newitem" data-bs-whatever="@mdo">
                                     <span class="fa fa-plus"></span>
                                 </button>
                             </div>
@@ -1295,7 +1248,7 @@ function updateCustomerDropdown() {
                         <td hidden><input type="number" step="any" name='taxamount1' id="taxamount${roinc}" class="form-control border-secondary taxamount" /></td>
                         
                         <td style="width:13%">
-                            <button type="button" id="${roinc}" class="btn  font-weight-bold clone_row fa fa-clone px-2 my-1 py-1" title="Clone Row" ></button>
+                            <button type="button" id="${roinc}" class="btn btn-outline-info font-weight-bold clone_row fa fa-clone px-2 my-1 py-1" title="Clone Row" ></button>
                             <br>
                             <button type="button" id="${roinc}" class="btn btn-danger px-2 mx-1 py-1 remove_row fa fa-close"></button>
                         </td>
